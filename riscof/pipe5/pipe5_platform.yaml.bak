@@ -1,0 +1,15 @@
+# ============================================================
+#  pipe5_platform.yaml  -  Specificatia de platforma pentru DUT
+# ------------------------------------------------------------
+#  reset      : vectorul de reset al nucleului (PC initial = 0x0).
+#  nmi/mtime  : nefolosite (DUT minimal, fara intreruperi).
+#  Valideaza cu riscv-config inainte de rulare.
+# ============================================================
+nmi:
+  label: nmi_vector
+reset:
+  label: reset_vector
+mtime:
+  implemented: false
+mtimecmp:
+  implemented: false

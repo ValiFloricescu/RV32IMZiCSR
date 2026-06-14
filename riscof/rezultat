@@ -1,0 +1,1800 @@
+[ OK ] add-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] addi-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] and-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] andi-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] auipc-01.S                   DUT=98 REF=98  HALT(pass)
+[ OK ] fence-01.S                   DUT=3 REF=3  HALT(pass)
+[ OK ] lui-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] or-01.S                      DUT=98 REF=98  HALT(pass)
+[ OK ] ori-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] sll-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] slli-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] slt-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] slti-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] sltiu-01.S                   DUT=98 REF=98  HALT(pass)
+[ OK ] sltu-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] sra-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] srai-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] srl-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] srli-01.S                    DUT=98 REF=98  HALT(pass)
+[ OK ] sub-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] xor-01.S                     DUT=98 REF=98  HALT(pass)
+[ OK ] xori-01.S                    DUT=162 REF=162  HALT(pass)
+[ OK ] add-01.S                     DUT=590 REF=590  HALT(pass)
+[ OK ] addi-01.S                    DUT=563 REF=563  HALT(pass)
+[ OK ] and-01.S                     DUT=586 REF=586  HALT(pass)
+[ OK ] andi-01.S                    DUT=564 REF=564  HALT(pass)
+[ OK ] auipc-01.S                   DUT=66 REF=66  HALT(pass)
+[ OK ] beq-01.S                     DUT=585 REF=585  HALT(pass)
+[ OK ] bge-01.S                     DUT=592 REF=592  HALT(pass)
+[ OK ] bgeu-01.S                    DUT=728 REF=728  HALT(pass)
+[ OK ] blt-01.S                     DUT=582 REF=582  HALT(pass)
+[ OK ] bltu-01.S                    DUT=728 REF=728  HALT(pass)
+[ OK ] bne-01.S                     DUT=586 REF=586  HALT(pass)
+[ OK ] fence-01.S                   DUT=3 REF=3  HALT(pass)
+[ OK ] jal-01.S                     DUT=34 REF=34  HALT(pass)
+[ OK ] jalr-01.S                    DUT=35 REF=35  HALT(pass)
+[ OK ] lb-align-01.S                DUT=35 REF=35  HALT(pass)
+[ OK ] lbu-align-01.S               DUT=34 REF=34  HALT(pass)
+[ OK ] lh-align-01.S                DUT=34 REF=34  HALT(pass)
+[ OK ] lhu-align-01.S               DUT=34 REF=34  HALT(pass)
+[ OK ] lui-01.S                     DUT=65 REF=65  HALT(pass)
+[ OK ] lw-align-01.S                DUT=34 REF=34  HALT(pass)
+[ OK ] or-01.S                      DUT=589 REF=589  HALT(pass)
+[ OK ] ori-01.S                     DUT=411 REF=411  HALT(pass)
+[ OK ] sb-align-01.S                DUT=72 REF=72  HALT(pass)
+[ OK ] sh-align-01.S                DUT=73 REF=73  HALT(pass)
+[ OK ] sll-01.S                     DUT=91 REF=91  HALT(pass)
+[ OK ] slli-01.S                    DUT=90 REF=90  HALT(pass)
+[ OK ] slt-01.S                     DUT=586 REF=586  HALT(pass)
+[ OK ] slti-01.S                    DUT=562 REF=562  HALT(pass)
+[ OK ] sltiu-01.S                   DUT=701 REF=701  HALT(pass)
+[ OK ] sltu-01.S                    DUT=724 REF=724  HALT(pass)
+[ OK ] sra-01.S                     DUT=92 REF=92  HALT(pass)
+[ OK ] srai-01.S                    DUT=89 REF=89  HALT(pass)
+[ OK ] srl-01.S                     DUT=94 REF=94  HALT(pass)
+[ OK ] srli-01.S                    DUT=92 REF=92  HALT(pass)
+[ OK ] sub-01.S                     DUT=594 REF=594  HALT(pass)
+[ OK ] sw-align-01.S                DUT=70 REF=70  HALT(pass)
+[ OK ] xor-01.S                     DUT=590 REF=590  HALT(pass)
+[ OK ] xori-01.S                    DUT=568 REF=568  HALT(pass)
+[ OK ] div-01.S                     DUT=616 REF=616  HALT(pass)
+[ OK ] divu-01.S                    DUT=754 REF=754  HALT(pass)
+[ OK ] mul-01.S                     DUT=616 REF=616  HALT(pass)
+[ OK ] mulh-01.S                    DUT=616 REF=616  HALT(pass)
+[ OK ] mulhsu-01.S                  DUT=680 REF=680  HALT(pass)
+[ OK ] mulhu-01.S                   DUT=754 REF=754  HALT(pass)
+[ OK ] rem-01.S                     DUT=616 REF=616  HALT(pass)
+[ OK ] remu-01.S                    DUT=754 REF=754  HALT(pass)
+######## pmpm_all_entries_check-01.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  12a13,269
+  > 00000000
+  > 00000000
+  > 00000000
+  > 00000000
+  > beefcafe
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpm_all_entries_check-02.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  12a13,269
+  > 00000000
+  > 00000000
+  > 00000000
+  > 00000000
+  > 00000000
+  > beefcafe
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpm_all_entries_check-03.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  12a13,269
+  > 00000000
+  > 00000000
+  > 00000000
+  > 00000000
+  > 00000000
+  > beefcafe
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpm_all_entries_check-04.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,12c2,269
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > beefcafe
+
+######## pmpm_cfg_A_all.S  [DIFERIT] ########
+  DUT=196 linii | REF=196 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  67,114c67,114
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002c1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002c9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002d5
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002dd
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002ed
+  < 00000000
+  < 000008d3
+
+######## pmpm_cfg_A_off_all.S  [DIFERIT] ########
+  DUT=644 linii | REF=644 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  131,298c131,298
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+
+######## pmpm_cfg_A_tor_bot.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,17c2,17
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 80002004
+  < 80002004
+  < 80002004
+  < 80002004
+  < 80002004
+  < 80002004
+  < 80002004
+  < 80002004
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+
+######## pmpm_cfg_A_tor_zero.S  [DIFERIT] ########
+  DUT=292 linii | REF=292 linii | DUT halt: TIMEOUT
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,8c2,8
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < deadbeef
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > beefcafe
+  36,74c36,38
+  < 00000002
+  < 80000281
+  < 7ffffd7f
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 7ffffd77
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 7ffffd6f
+  < 000008d3
+  < 00000002
+
+######## pmpm_cfg_L_access_all.S  [DIFERIT] ########
+  DUT=196 linii | REF=196 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  12a13,80
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > beefcafe
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpm_cfg_L_modify_napot.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < fffffafe
+  ---
+  > beefcafe
+  35,126c35,126
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+
+######## pmpm_cfg_L_modify_off.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < fffffafe
+  ---
+  > beefcafe
+  35,126c35,126
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+
+######## pmpm_cfg_L_modify_tor.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < fffffafe
+  ---
+  > beefcafe
+  35,126c35,126
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+
+######## pmpm_cfg_na4_all.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < 00000013
+  ---
+  > 00000000
+  68,234c68,234
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpm_cfg_napot_all.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < 00000013
+  ---
+  > 00000000
+  68,234c68,234
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpm_cfg_tor_all.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  68,190c68,190
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpm_cfg_tor_check-01.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,7c2,7
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  67,122c67,122
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+
+######## pmpm_cfg_tor_check-02.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,7c2,7
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  67,122c67,122
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+
+######## pmpm_cfg_tor_check-03.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,7c2,7
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  67,122c67,122
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+
+######## pmpm_cfg_XWR_all-01.S  [DIFERIT] ########
+  DUT=644 linii | REF=644 linii | DUT halt: HALT(fail)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  11a12,524
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+
+######## pmpm_cfg_XWR_all-02.S  [DIFERIT] ########
+  DUT=644 linii | REF=644 linii | DUT halt: HALT(fail)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  11a12,524
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+
+######## pmpm_cfg_XWR_all-03.S  [DIFERIT] ########
+  DUT=644 linii | REF=644 linii | DUT halt: HALT(fail)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  11a12,524
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+
+######## pmpm_cfg_XWR_all-04.S  [DIFERIT] ########
+  DUT=644 linii | REF=644 linii | DUT halt: HALT(fail)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  11a12,524
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+
+######## pmpm_csr_walk.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  1a2,67
+  > beefcafe
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpm_grain_check.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  35,94c35,94
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+
+######## pmpm_grain.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  1a2,67
+  > beefcafe
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpm_misaligned_na4.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,13c2,13
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  36,114c36,114
+  < 00000002
+  < 80000281
+  < 00000000
+
+######## pmpm_misaligned_napot.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,13c2,13
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  36,114c36,114
+  < 00000002
+  < 80000281
+  < 00000000
+
+######## pmpm_misaligned_off.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,13c2,13
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  36,114c36,114
+  < 00000002
+  < 80000281
+  < 00000000
+
+######## pmpm_misaligned_tor.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,13c2,13
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  < xxxxxx00
+  < 0000xx00
+  < 00000000
+  ---
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  > 00000013
+  36,114c36,114
+  < 00000002
+  < 80000281
+  < 00000000
+
+######## pmpm_na4_legal_lwxr.S  [DIFERIT] ########
+  DUT=292 linii | REF=292 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  36,130c36,130
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpm_napot_legal_lwxr.S  [DIFERIT] ########
+  DUT=292 linii | REF=292 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  57,58c57,58
+  < 800002a9
+  < 00000000
+  ---
+  > 800004ec
+  > 00001dbc
+  60,218c60,218
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002c1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002c9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000301
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000309
+  < 00000000
+
+######## pmpm_priority_off.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  68,126c68,126
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpm_priority.S  [DIFERIT] ########
+  DUT=324 linii | REF=324 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  67,174c67,174
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+
+######## pmpm_tor_legal_lwxr.S  [DIFERIT] ########
+  DUT=292 linii | REF=292 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  36,178c36,178
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpu_cfg_A_off.S  [DIFERIT] ########
+  DUT=164 linii | REF=164 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  35,86c35,86
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+
+######## pmpu_cfg_XWR.S  [DIFERIT] ########
+  DUT=580 linii | REF=580 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  68,166c68,166
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpu_csr_access.S  [DIFERIT] ########
+  DUT=644 linii | REF=644 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  133,140d132
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  458a451,458
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+  > deadbeef
+
+######## pmpu_mprv_check-01.S  [DIFERIT] ########
+  DUT=388 linii | REF=388 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  132,194c132,194
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpu_mprv_check-02.S  [DIFERIT] ########
+  DUT=388 linii | REF=388 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  131,194c131,194
+  < 000008d3
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+
+######## pmpu_na4_legal_lxwr.S  [DIFERIT] ########
+  DUT=292 linii | REF=292 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  36,130c36,130
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpu_napot_legal_lxwr.S  [DIFERIT] ########
+  DUT=580 linii | REF=580 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  68,250c68,250
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpu_none.S  [DIFERIT] ########
+  DUT=52 linii | REF=52 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  20,52c20,52
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## pmpu_tor_legal_lxwr.S  [DIFERIT] ########
+  DUT=292 linii | REF=292 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  36,154c36,154
+  < 00000002
+  < 80000281
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000289
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000291
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 80000299
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a1
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002a9
+  < 00000000
+  < 000008d3
+  < 00000002
+  < 800002b1
+  < 00000000
+  < 000008d3
+  < 00000002
+
+######## ebreak.S  [DIFERIT] ########
+  DUT=8 linii | REF=8 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,3c2,3
+  < deadbeef
+  < deadbeef
+  ---
+  > 00000000
+  > 11111111
+  7c7
+  < deadbeef
+  ---
+  > 00000044
+
+[ OK ] ecall.S                      DUT=8 REF=8  HALT(pass)
+[ OK ] misalign1-jalr-01.S          DUT=3 REF=3  HALT(pass)
+######## misalign2-jalr-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < 00000044
+  ---
+  > 00000002
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 0000007c
+  > 00000092
+
+######## misalign-beq-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 00000058
+  > 00000066
+
+######## misalign-bge-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 0000005c
+  > 0000006a
+
+######## misalign-bgeu-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: TIMEOUT
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < deadbeef
+  ---
+  > 00000000
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 00000854
+  > 00000052
+
+######## misalign-blt-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 00000058
+  > 00000066
+
+######## misalign-bltu-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: TIMEOUT
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < deadbeef
+  ---
+  > 00000000
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 0000005c
+  > 00000052
+
+######## misalign-bne-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000000
+  > 00000058
+  > 0000007a
+
+######## misalign-jal-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < 00000070
+  ---
+  > 0000006e
+  4,35c4,35
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+
+######## misalign-lh-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < ffffbeca
+  ---
+  > 00000000
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000004
+  > 0000005c
+  > 00000009
+
+######## misalign-lhu-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2c2
+  < 0000beca
+  ---
+  > 00000000
+  4,7c4,7
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000004
+  > 0000005c
+  > 00000009
+
+######## misalign-lw-01.S  [DIFERIT] ########
+  DUT=71 linii | REF=71 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,4c2,4
+  < babecafe
+  < babecafe
+  < babecafe
+  ---
+  > 00000000
+  > 00000000
+  > 00000000
+  6,17c6,17
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  ---
+  > 000008d3
+  > 00000004
+  > 0000005c
+  > 00000009
+  > 000008d3
+  > 00000004
+  > 0000009c
+  > 0000000a
+
+######## misalign-sh-01.S  [DIFERIT] ########
+  DUT=69 linii | REF=69 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,6d1
+  < de0000ef
+  < 6f5ca309
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  7a3,7
+  > 6f5ca309
+  > 000008d3
+  > 00000006
+  > 0000004c
+  > 00000005
+
+######## misalign-sw-01.S  [DIFERIT] ########
+  DUT=71 linii | REF=71 linii | DUT halt: HALT(pass)
+  --- diff (max 30 linii; '<' = DUT, '>' = REF) ---
+  2,14d1
+  < 00040000
+  < 00080000
+  < ffff7fff
+  < 6f5ca309
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  < deadbeef
+  17a5,17
+  > 6f5ca309
+  > 000008d3
+  > 00000006
+  > 0000004c
+  > 00000005
+  > 000008d3
+  > 00000006
+  > 00000068
+  > 0000000a
+  > 000008d3
+  > 00000006
+  > 00000088
+  > 0000000f
+
+============================================================
+  SUMAR: 127 teste | 70 MATCH | 57 DIFERITE | 0 ref-lipsa | 0 dut-lipsa
+  PICATE: pmpm_all_entries_check-01.S pmpm_all_entries_check-02.S pmpm_all_entries_check-03.S pmpm_all_entries_check-04.S pmpm_cfg_A_all.S pmpm_cfg_A_off_all.S pmpm_cfg_A_tor_bot.S pmpm_cfg_A_tor_zero.S pmpm_cfg_L_access_all.S pmpm_cfg_L_modify_napot.S pmpm_cfg_L_modify_off.S pmpm_cfg_L_modify_tor.S pmpm_cfg_na4_all.S pmpm_cfg_napot_all.S pmpm_cfg_tor_all.S pmpm_cfg_tor_check-01.S pmpm_cfg_tor_check-02.S pmpm_cfg_tor_check-03.S pmpm_cfg_XWR_all-01.S pmpm_cfg_XWR_all-02.S pmpm_cfg_XWR_all-03.S pmpm_cfg_XWR_all-04.S pmpm_csr_walk.S pmpm_grain_check.S pmpm_grain.S pmpm_misaligned_na4.S pmpm_misaligned_napot.S pmpm_misaligned_off.S pmpm_misaligned_tor.S pmpm_na4_legal_lwxr.S pmpm_napot_legal_lwxr.S pmpm_priority_off.S pmpm_priority.S pmpm_tor_legal_lwxr.S pmpu_cfg_A_off.S pmpu_cfg_XWR.S pmpu_csr_access.S pmpu_mprv_check-01.S pmpu_mprv_check-02.S pmpu_na4_legal_lxwr.S pmpu_napot_legal_lxwr.S pmpu_none.S pmpu_tor_legal_lxwr.S ebreak.S misalign2-jalr-01.S misalign-beq-01.S misalign-bge-01.S misalign-bgeu-01.S misalign-blt-01.S misalign-bltu-01.S misalign-bne-01.S misalign-jal-01.S misalign-lh-01.S misalign-lhu-01.S misalign-lw-01.S misalign-sh-01.S misalign-sw-01.S
+============================================================

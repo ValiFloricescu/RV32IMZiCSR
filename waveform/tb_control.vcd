@@ -1,0 +1,359 @@
+$date
+	Thu Jun 11 04:51:17 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_control $end
+$var wire 2 ! wb_sel [1:0] $end
+$var wire 1 " reg_write $end
+$var wire 1 # mem_write $end
+$var wire 1 $ mem_read $end
+$var wire 1 % jump $end
+$var wire 1 & jalr $end
+$var wire 3 ' imm_sel [2:0] $end
+$var wire 17 ( ctrl [16:0] $end
+$var wire 1 ) branch $end
+$var wire 4 * alu_op [3:0] $end
+$var wire 1 + alu_b_src $end
+$var wire 1 , alu_a_src $end
+$var reg 3 - funct3 [2:0] $end
+$var reg 1 . funct7b5 $end
+$var reg 7 / opcode [6:0] $end
+$var integer 32 0 errors [31:0] $end
+$scope function pack $end
+$var reg 1 1 aa $end
+$var reg 1 2 ab $end
+$var reg 1 3 br $end
+$var reg 3 4 is [2:0] $end
+$var reg 1 5 jp $end
+$var reg 1 6 jr $end
+$var reg 1 7 mr $end
+$var reg 1 8 mw $end
+$var reg 4 9 op [3:0] $end
+$var reg 1 : rw $end
+$var reg 2 ; wb [1:0] $end
+$upscope $end
+$scope module dut $end
+$var wire 12 < funct12 [11:0] $end
+$var wire 3 = funct3 [2:0] $end
+$var wire 1 > funct7b0 $end
+$var wire 1 . funct7b5 $end
+$var wire 7 ? opcode [6:0] $end
+$var reg 1 , alu_a_src $end
+$var reg 4 @ alu_arith [3:0] $end
+$var reg 1 + alu_b_src $end
+$var reg 4 A alu_op [3:0] $end
+$var reg 1 ) branch $end
+$var reg 3 B imm_sel [2:0] $end
+$var reg 1 C is_csr $end
+$var reg 1 D is_muldiv $end
+$var reg 1 & jalr $end
+$var reg 1 % jump $end
+$var reg 1 $ mem_read $end
+$var reg 1 # mem_write $end
+$var reg 1 " reg_write $end
+$var reg 1 E sys_ebreak $end
+$var reg 1 F sys_ecall $end
+$var reg 1 G sys_mret $end
+$var reg 2 H wb_sel [1:0] $end
+$upscope $end
+$scope task chk $end
+$var reg 17 I exp [16:0] $end
+$var reg 17 J got [16:0] $end
+$var integer 32 K id [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx K
+bx J
+bx I
+b0 H
+0G
+0F
+0E
+0D
+0C
+b0 B
+b0 A
+b0 @
+b110011 ?
+z>
+b0 =
+bz <
+bx ;
+x:
+bx 9
+x8
+x7
+x6
+x5
+bx 4
+x3
+x2
+x1
+b0 0
+b110011 /
+0.
+b0 -
+0,
+0+
+b0 *
+0)
+b10000000000000000 (
+b0 '
+0&
+0%
+0$
+0#
+1"
+b0 !
+$end
+#1000
+b1 *
+b1 A
+b10000010000000000 (
+1"
+b1 @
+1.
+b10000000000000000 I
+1:
+01
+02
+b0 9
+b0 4
+07
+08
+b0 ;
+03
+05
+06
+b10000000000000000 J
+b1 K
+#2000
+b11 *
+b11 A
+b10000110000000000 (
+1"
+b11 @
+0.
+b10 -
+b10 =
+b10000010000000000 I
+b1 9
+b10000010000000000 J
+b10 K
+#3000
+b111 *
+b111 A
+b10001110000000000 (
+1"
+b111 @
+1.
+b101 -
+b101 =
+b10000110000000000 I
+b11 9
+b10000110000000000 J
+b11 K
+#4000
+b0 @
+1+
+b0 *
+b0 A
+b10100000000000000 (
+1"
+0.
+b0 -
+b0 =
+b10011 /
+b10011 ?
+b10001110000000000 I
+b111 9
+b10001110000000000 J
+b100 K
+#5000
+1+
+b10100000000000000 (
+1"
+b1 @
+1.
+b10100000000000000 I
+12
+b0 9
+b10100000000000000 J
+b101 K
+#6000
+b111 *
+b111 A
+1+
+b10101110000000000 (
+1"
+b111 @
+b101 -
+b101 =
+b110 K
+#7000
+b11 @
+b1 !
+b1 H
+1$
+b0 *
+b0 A
+1+
+b10100000001001000 (
+1"
+0.
+b10 -
+b10 =
+b11 /
+b11 ?
+b10101110000000000 I
+b111 9
+b10101110000000000 J
+b111 K
+#8000
+1#
+b1 '
+b1 B
+b0 !
+b0 H
+0$
+1+
+b100000010100000 (
+0"
+b100011 /
+b100011 ?
+b10100000001001000 I
+b0 9
+17
+b1 ;
+b10100000001001000 J
+b1000 K
+#9000
+b0 @
+1)
+0#
+b10 '
+b10 B
+b100000100 (
+0+
+b0 -
+b0 =
+b1100011 /
+b1100011 ?
+b100000010100000 I
+0:
+b1 4
+07
+18
+b0 ;
+b100000010100000 J
+b1001 K
+#10000
+b10 !
+b10 H
+1%
+1"
+0)
+b10000001000010010 (
+b100 '
+b100 B
+b1101111 /
+b1101111 ?
+b100000100 I
+02
+b10 4
+08
+13
+b100000100 J
+b1010 K
+#11000
+1+
+1&
+1%
+b10 !
+b10 H
+b0 '
+b0 B
+b10100000000010011 (
+1"
+b1100111 /
+b1100111 ?
+b10000001000010010 I
+1:
+b100 4
+b10 ;
+03
+15
+b10000001000010010 J
+b1011 K
+#12000
+b1010 *
+b1010 A
+b11 '
+b11 B
+0&
+0%
+b0 !
+b0 H
+1+
+b10110100110000000 (
+1"
+b110111 /
+b110111 ?
+b10100000000010011 I
+12
+b0 4
+16
+b10100000000010011 J
+b1100 K
+#13000
+1,
+b11 '
+b11 B
+b0 *
+b0 A
+1+
+b11100000110000000 (
+1"
+b10111 /
+b10111 ?
+b10110100110000000 I
+b1010 9
+b11 4
+b0 ;
+05
+06
+b10110100110000000 J
+b1101 K
+#14000
+b0 '
+b0 B
+0+
+0,
+b0 (
+0"
+b0 /
+b0 ?
+b11100000110000000 I
+11
+b0 9
+b11100000110000000 J
+b1110 K
+#15000
+b0 I
+0:
+01
+02
+b0 4
+b0 J
+b1111 K

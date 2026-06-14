@@ -1,0 +1,327 @@
+$date
+	Thu Jun 11 04:51:18 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_csr $end
+$var wire 32 ! rdata [31:0] $end
+$var wire 32 " mtvec_o [31:0] $end
+$var wire 32 # mepc_o [31:0] $end
+$var wire 1 $ addr_valid $end
+$var reg 12 % addr [11:0] $end
+$var reg 1 & clk $end
+$var reg 1 ' mret_en $end
+$var reg 1 ( rd_en $end
+$var reg 1 ) rst_n $end
+$var reg 32 * trap_cause [31:0] $end
+$var reg 1 + trap_en $end
+$var reg 32 , trap_epc [31:0] $end
+$var reg 32 - trap_val [31:0] $end
+$var reg 32 . wdata [31:0] $end
+$var reg 1 / wr_en $end
+$var integer 32 0 errors [31:0] $end
+$scope module dut $end
+$var wire 12 1 addr [11:0] $end
+$var wire 1 & clk $end
+$var wire 32 2 mepc_o [31:0] $end
+$var wire 1 ' mret_en $end
+$var wire 1 ( rd_en $end
+$var wire 1 ) rst_n $end
+$var wire 32 3 trap_cause [31:0] $end
+$var wire 1 + trap_en $end
+$var wire 32 4 trap_epc [31:0] $end
+$var wire 32 5 trap_val [31:0] $end
+$var wire 32 6 wdata [31:0] $end
+$var wire 1 / wr_en $end
+$var wire 32 7 mtvec_o [31:0] $end
+$var wire 32 8 mstatus [31:0] $end
+$var reg 1 $ addr_valid $end
+$var reg 32 9 mcause [31:0] $end
+$var reg 32 : mepc [31:0] $end
+$var reg 32 ; mie [31:0] $end
+$var reg 32 < mip [31:0] $end
+$var reg 32 = mscratch [31:0] $end
+$var reg 1 > mstatus_mie $end
+$var reg 1 ? mstatus_mpie $end
+$var reg 32 @ mtval [31:0] $end
+$var reg 32 A mtvec [31:0] $end
+$var reg 32 B rdata [31:0] $end
+$upscope $end
+$scope task rd_chk $end
+$var reg 12 C a [11:0] $end
+$var reg 32 D exp [31:0] $end
+$var integer 32 E id [31:0] $end
+$upscope $end
+$scope task wr $end
+$var reg 12 F a [11:0] $end
+$var reg 32 G d [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx G
+bx F
+bx E
+bx D
+bx C
+b0 B
+b0 A
+b0 @
+0?
+0>
+b0 =
+b0 <
+b0 ;
+b0 :
+b0 9
+b11000000000000 8
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+0/
+b0 .
+b0 -
+b0 ,
+0+
+b0 *
+0)
+0(
+0'
+0&
+b0 %
+0$
+b0 #
+b0 "
+b0 !
+$end
+#5000
+1&
+#10000
+0&
+#15000
+1&
+#20000
+b1000000000000000001000100000000 D
+b1100000001 C
+b1 E
+1)
+0&
+#25000
+1&
+#30000
+b1000000000000000001000100000000 !
+b1000000000000000001000100000000 B
+1$
+1(
+b1100000001 %
+b1100000001 1
+0&
+#31000
+b0 D
+b111100010100 C
+b10 E
+0(
+#35000
+1&
+#40000
+b0 !
+b0 B
+1(
+b111100010100 %
+b111100010100 1
+0&
+#41000
+b1001001000000 G
+b1100000101 F
+0(
+#45000
+1&
+#50000
+1/
+b1001001000000 .
+b1001001000000 6
+b1100000101 %
+b1100000101 1
+0&
+#55000
+b1001001000000 !
+b1001001000000 B
+b1001001000000 "
+b1001001000000 7
+b1001001000000 A
+1&
+#60000
+b1001001000000 D
+b1100000101 C
+b11 E
+0/
+0&
+#65000
+1&
+#70000
+1(
+0&
+#71000
+b11011110101011011011111011101111 G
+b1101000000 F
+0(
+#75000
+1&
+#80000
+b0 !
+b0 B
+1/
+b11011110101011011011111011101111 .
+b11011110101011011011111011101111 6
+b1101000000 %
+b1101000000 1
+0&
+#85000
+b11011110101011011011111011101111 !
+b11011110101011011011111011101111 B
+b11011110101011011011111011101111 =
+1&
+#90000
+b11011110101011011011111011101111 D
+b1101000000 C
+b100 E
+0/
+0&
+#95000
+1&
+#100000
+1(
+0&
+#101000
+0(
+#105000
+1&
+#110000
+0$
+b0 !
+b0 B
+1(
+b11111000000 %
+b11111000000 1
+0&
+#111000
+b1000 G
+b1100000000 F
+0(
+#115000
+1&
+#120000
+b11000000000000 !
+b11000000000000 B
+1$
+1/
+b1000 .
+b1000 6
+b1100000000 %
+b1100000000 1
+0&
+#125000
+b11000000001000 !
+b11000000001000 B
+b11000000001000 8
+1>
+1&
+#130000
+0/
+0&
+#135000
+1&
+#140000
+b10000000 ,
+b10000000 4
+b1011 *
+b1011 3
+1+
+0&
+#145000
+b11000010000000 !
+b11000010000000 B
+b11000010000000 8
+0>
+1?
+b1011 9
+b10000000 #
+b10000000 2
+b10000000 :
+1&
+#150000
+b10000000 D
+b1101000001 C
+b101 E
+0+
+0&
+#155000
+1&
+#160000
+b10000000 !
+b10000000 B
+1(
+b1101000001 %
+b1101000001 1
+0&
+#161000
+b1011 D
+b1101000010 C
+b110 E
+0(
+#165000
+1&
+#170000
+b1011 !
+b1011 B
+1(
+b1101000010 %
+b1101000010 1
+0&
+#171000
+0(
+#175000
+1&
+#180000
+b11000010000000 !
+b11000010000000 B
+1(
+b1100000000 %
+b1100000000 1
+0&
+#181000
+0(
+#185000
+1&
+#190000
+1'
+0&
+#195000
+b11000010001000 !
+b11000010001000 B
+b11000010001000 8
+1>
+1&
+#200000
+0'
+0&
+#205000
+1&
+#210000
+1(
+0&
+#211000
+0(

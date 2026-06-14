@@ -1,0 +1,89 @@
+$date
+	Thu Jun 11 04:51:18 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_hazard $end
+$var wire 1 ! stall $end
+$var reg 1 " idex_mem_read $end
+$var reg 5 # idex_rd [4:0] $end
+$var reg 5 $ ifid_rs1 [4:0] $end
+$var reg 5 % ifid_rs2 [4:0] $end
+$var integer 32 & errors [31:0] $end
+$scope module dut $end
+$var wire 1 " idex_mem_read $end
+$var wire 5 ' idex_rd [4:0] $end
+$var wire 5 ( ifid_rs1 [4:0] $end
+$var wire 5 ) ifid_rs2 [4:0] $end
+$var wire 1 ! stall $end
+$upscope $end
+$scope task chk $end
+$var reg 1 * exp $end
+$var reg 1 + got $end
+$var integer 32 , id [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+bx ,
+x+
+x*
+b10 )
+b101 (
+b101 '
+b0 &
+b10 %
+b101 $
+b101 #
+1"
+1!
+$end
+#1000
+b111 %
+b111 )
+b1 $
+b1 (
+b111 #
+b111 '
+1*
+1+
+b1 ,
+#2000
+0!
+b0 %
+b0 )
+b0 $
+b0 (
+b0 #
+b0 '
+b10 ,
+#3000
+b101 %
+b101 )
+b101 $
+b101 (
+b101 #
+b101 '
+0"
+0*
+0+
+b11 ,
+#4000
+b10 %
+b10 )
+b1 $
+b1 (
+b1001 #
+b1001 '
+1"
+b100 ,
+#5000
+b101 ,

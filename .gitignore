@@ -1,0 +1,65 @@
+# --- rezultate de simulare (regenerabile) ---
+sim/*.out
+sim/*.log
+sim/*.signature
+*.o
+*.elf
+*.vvp
+
+# --- formele de unda le PASTRAM pentru documentatie ---
+# (waveform/*.vcd sunt versionate intentionat;
+#  decomenteaza randul de mai jos daca nu mai vrei asta)
+# waveform/*.vcd
+
+# --- artefacte RISCOF (regenerabile din suita + plugin) ---
+riscof/riscof_work/
+**/__pycache__/
+*.pyc
+report.html
+**/report.html
+rezultat
+script.sh
+
+#  Vivado / FPGA (Zynq-7000 PYNQ-Z2) — toate regenerabile
+
+# directoare de proiect generate
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.runs/
+*.gen/
+.Xil/
+
+# loguri si jurnale Vivado / Xilinx
+vivado*.jou
+vivado*.log
+*.jou
+*.str
+hs_err_pid*.log
+webtalk*.jou
+webtalk*.log
+
+# rezultate de sinteza/implementare si checkpoint-uri
+*.dcp
+*.bit
+*.ltx
+*.rpt
+*.pb
+usage_statistics_webtalk.*
+
+# simulator Vivado (xsim)
+*.wdb
+*.wcfg
+xsim.dir/
+xelab.*
+xvlog.*
+
+# editor/so
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
