@@ -13,6 +13,7 @@ sim/*.signature
 
 # --- artefacte RISCOF (regenerabile din suita + plugin) ---
 riscof/riscof_work/
+riscof_work/
 **/__pycache__/
 *.pyc
 report.html

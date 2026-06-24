@@ -1,0 +1,17 @@
+[*] Forma de unda: automatul multi-ciclu al unitatii muldiv (test unitar)
+[dumpfile] "tb_muldiv.vcd"
+[savefile] "wave_muldiv_unit.gtkw"
+[timestart] 0
+[treeopen] tb_muldiv.
+[treeopen] tb_muldiv.dut.
+@28
+tb_muldiv.dut.clk
+tb_muldiv.dut.rst_n
+tb_muldiv.dut.start
+tb_muldiv.dut.op[2:0]
+tb_muldiv.dut.a[31:0]
+tb_muldiv.dut.b[31:0]
+tb_muldiv.dut.state[2:0]
+tb_muldiv.dut.busy
+tb_muldiv.dut.done
+tb_muldiv.dut.result[31:0]

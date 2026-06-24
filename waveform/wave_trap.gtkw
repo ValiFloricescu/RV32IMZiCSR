@@ -1,0 +1,17 @@
+[*] Forma de unda: intrarea in exceptie si revenirea (mret)
+[dumpfile] "tb_core_pipe_trap.vcd"
+[savefile] "wave_trap.gtkw"
+[timestart] 0
+[treeopen] tb_core_pipe_trap.
+[treeopen] tb_core_pipe_trap.dut.
+@28
+tb_core_pipe_trap.dut.clk
+tb_core_pipe_trap.dut.pc[31:0]
+tb_core_pipe_trap.dut.ex_trap
+tb_core_pipe_trap.dut.ex_mret
+tb_core_pipe_trap.dut.ex_redirect
+tb_core_pipe_trap.dut.ex_redirect_pc[31:0]
+tb_core_pipe_trap.dut.u_csr.mepc[31:0]
+tb_core_pipe_trap.dut.u_csr.mcause[31:0]
+tb_core_pipe_trap.dut.u_csr.mstatus_mie
+tb_core_pipe_trap.dut.u_csr.mstatus_mpie

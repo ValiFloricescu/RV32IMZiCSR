@@ -1,0 +1,16 @@
+[*] Forma de unda: blocarea pipeline-ului la extensia M
+[dumpfile] "tb_core_pipe_m.vcd"
+[savefile] "wave_muldiv.gtkw"
+[timestart] 0
+[treeopen] tb_core_pipe_m.
+[treeopen] tb_core_pipe_m.dut.
+@28
+tb_core_pipe_m.dut.clk
+tb_core_pipe_m.dut.pc[31:0]
+tb_core_pipe_m.dut.idex_is_muldiv
+tb_core_pipe_m.dut.mul_stall
+tb_core_pipe_m.dut.u_muldiv.state[2:0]
+tb_core_pipe_m.dut.u_muldiv.done
+tb_core_pipe_m.dut.u_muldiv.result[31:0]
+tb_core_pipe_m.dut.memwb_reg_write
+tb_core_pipe_m.dut.memwb_rd[4:0]

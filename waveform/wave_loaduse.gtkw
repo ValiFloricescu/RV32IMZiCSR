@@ -1,0 +1,16 @@
+[*] Forma de unda: bula la hazardul load-use
+[dumpfile] "tb_core_pipe_fwd.vcd"
+[savefile] "wave_loaduse.gtkw"
+[timestart] 0
+[treeopen] tb_core_pipe_fwd.
+[treeopen] tb_core_pipe_fwd.dut.
+@28
+tb_core_pipe_fwd.dut.clk
+tb_core_pipe_fwd.dut.pc[31:0]
+tb_core_pipe_fwd.dut.idex_mem_read
+tb_core_pipe_fwd.dut.idex_rd[4:0]
+tb_core_pipe_fwd.dut.ifid_rs1[4:0]
+tb_core_pipe_fwd.dut.ifid_rs2[4:0]
+tb_core_pipe_fwd.dut.load_use_stall
+tb_core_pipe_fwd.dut.forward_a[1:0]
+tb_core_pipe_fwd.dut.forward_b[1:0]

@@ -6,13 +6,19 @@ module riscv_core_pipe #(
 ) (
     input  wire        clk,
     input  wire        rst_n,
+    // ---- interfata INSTRUCTIUNI (handshake valid/ready) ----
     output wire [31:0] imem_addr,
+    output wire        imem_valid,   // 1 = nucleul cere fetch
     input  wire [31:0] imem_rdata,
+    input  wire        imem_ready,   // 1 = instructiunea e valida in acest ciclu
+    // ---- interfata DATE (handshake valid/ready) ----
     output wire [31:0] dmem_addr,
     output wire [31:0] dmem_wdata,
     output wire [3:0]  dmem_wstrb,
     output wire        dmem_we,
-    input  wire [31:0] dmem_rdata
+    output wire        dmem_valid,   // 1 = MEM cere acces (load sau store)
+    input  wire [31:0] dmem_rdata,
+    input  wire        dmem_ready    // 1 = accesul de date s-a incheiat in acest ciclu
 );
 
     // ============================================================
@@ -57,6 +63,13 @@ module riscv_core_pipe #(
     
     wire stall_front = load_use_stall | mul_stall;
 
+    // ---- handshake memorie: nucleul calculeaza singur stall-ul de magistrala ----
+    assign imem_valid = 1'b1;                                  // cere fetch in fiecare ciclu
+    assign dmem_valid = exmem_mem_read | exmem_mem_write;      // MEM cere acces
+    wire   if_stall   = imem_valid & ~imem_ready;              // fetch neterminat
+    wire   ls_stall   = dmem_valid & ~dmem_ready;              // acces de date neterminat
+    wire   bus_stall  = if_stall | ls_stall;                  // ingheata tot pana e gata
+
     // ============================================================
     //  ETAPA IF
     // ============================================================
@@ -65,6 +78,7 @@ module riscv_core_pipe #(
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n)            pc <= RESET_PC;
+        else if (bus_stall)    ;                    // magistrala: ingheata PC
         else if (!stall_front) pc <= next_pc;
     end
 
@@ -74,6 +88,8 @@ module riscv_core_pipe #(
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             ifid_pc <= 32'b0; ifid_pc4 <= 32'b0; ifid_instr <= `RV_NOP;
+        end else if (bus_stall) begin
+            // magistrala: hold
         end else if (stall_front) begin
             // hold (load-use sau muldiv)
         end else if (ex_redirect) begin
@@ -147,6 +163,8 @@ module riscv_core_pipe #(
             idex_pc <= 32'b0; idex_pc4 <= 32'b0;
             idex_rd <= 5'b0; idex_rs1 <= 5'b0; idex_rs2 <= 5'b0; idex_funct3 <= 3'b0;
             idex_is_csr <= 1'b0; idex_sys_ecall <= 1'b0; idex_sys_ebreak <= 1'b0; idex_sys_mret <= 1'b0; idex_csr_addr <= 12'b0;
+        end else if (bus_stall) begin
+            // magistrala: hold
         end else if (mul_stall) begin
         end else if (load_use_stall || ex_redirect) begin
             idex_reg_write <= 1'b0; idex_mem_read <= 1'b0; idex_mem_write <= 1'b0;
@@ -209,7 +227,7 @@ module riscv_core_pipe #(
 
     // unitatea de inmultire/impartire (extensia M)
     muldiv u_muldiv (
-        .clk(clk), .rst_n(rst_n),
+        .clk(clk), .rst_n(rst_n), .stall(bus_stall),
         .start(idex_is_muldiv), .op(idex_funct3),
         .a(ex_rs1_fwd), .b(ex_rs2_fwd),
         .result(mul_result), .busy(mul_busy), .done(mul_done)
@@ -281,6 +299,8 @@ module riscv_core_pipe #(
             exmem_reg_write <= 1'b0; exmem_mem_read <= 1'b0; exmem_mem_write <= 1'b0;
             exmem_wb_sel <= `WB_ALU; exmem_alu_result <= 32'b0; exmem_rs2_data <= 32'b0;
             exmem_pc4 <= 32'b0; exmem_rd <= 5'b0; exmem_funct3 <= 3'b0;
+        end else if (bus_stall) begin
+            // magistrala: hold
         end else if (mul_stall || ex_trap) begin
             exmem_reg_write <= 1'b0; exmem_mem_read <= 1'b0; exmem_mem_write <= 1'b0;
             exmem_wb_sel <= `WB_ALU; exmem_alu_result <= 32'b0; exmem_rs2_data <= 32'b0;
@@ -347,6 +367,8 @@ module riscv_core_pipe #(
             memwb_reg_write_r <= 1'b0; memwb_wb_sel <= `WB_ALU;
             memwb_alu_result <= 32'b0; memwb_load_data <= 32'b0; memwb_pc4 <= 32'b0;
             memwb_rd_r <= 5'b0;
+        end else if (bus_stall) begin
+            // magistrala: hold
         end else begin
             memwb_reg_write_r <= exmem_reg_write; memwb_wb_sel <= exmem_wb_sel;
             memwb_alu_result <= exmem_alu_result; memwb_load_data <= mem_load_data;
