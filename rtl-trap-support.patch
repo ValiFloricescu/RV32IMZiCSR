@@ -1,0 +1,152 @@
+diff --git a/rtl/control.v b/rtl/control.v
+index 8296eb7..a5b1241 100644
+--- a/rtl/control.v
++++ b/rtl/control.v
+@@ -23,7 +23,8 @@ module control (
+     output reg                   is_csr,       // instructiune CSR (Zicsr)
+     output reg                   sys_ecall,    // ECALL  -> trap
+     output reg                   sys_ebreak,   // EBREAK -> trap
+-    output reg                   sys_mret      // MRET   -> revenire din trap
++    output reg                   sys_mret,     // MRET   -> revenire din trap
++    output reg                   illegal       // opcode necunoscut -> trap (cauza 2)
+ );
+ 
+     // --- decodarea operatiei ALU pentru R-type / OP-IMM ---
+@@ -60,6 +61,7 @@ module control (
+         sys_ecall = 1'b0;
+         sys_ebreak= 1'b0;
+         sys_mret  = 1'b0;
++        illegal   = 1'b0;
+ 
+         case (opcode)
+             // ---- R-type: rd = rs1 op rs2 (sau extensia M) ----
+@@ -157,7 +159,10 @@ module control (
+                 end
+             end
+ 
+-            default: ;
++            // ---- MISC-MEM: FENCE / FENCE.I (NOP pe acest model de memorie) ----
++            `OPC_MISC_MEM: ;
++
++            default: illegal = 1'b1;   // instructiune ilegala -> trap in EX
+         endcase
+     end
+ 
+diff --git a/rtl/riscv_core_pipe.v b/rtl/riscv_core_pipe.v
+index 6bb6e58..5d47215 100644
+--- a/rtl/riscv_core_pipe.v
++++ b/rtl/riscv_core_pipe.v
+@@ -33,6 +33,7 @@ module riscv_core_pipe #(
+     reg [`WB_SEL_W-1:0]  idex_wb_sel;
+     reg                  idex_branch, idex_jump, idex_jalr, idex_is_muldiv;
+     reg                  idex_is_csr, idex_sys_ecall, idex_sys_ebreak, idex_sys_mret;
++    reg                  idex_illegal;
+     reg [11:0]           idex_csr_addr;
+     reg [31:0]           idex_rs1_data, idex_rs2_data, idex_imm, idex_pc, idex_pc4;
+     reg [4:0]            idex_rd, idex_rs1, idex_rs2;
+@@ -117,6 +118,7 @@ module riscv_core_pipe #(
+     wire [`WB_SEL_W-1:0]  id_wb_sel;
+     wire                  id_branch, id_jump, id_jalr, id_is_muldiv;
+     wire                  id_is_csr, id_sys_ecall, id_sys_ebreak, id_sys_mret;
++    wire                  id_illegal;
+ 
+     control u_ctrl (
+         .opcode(id_opcode), .funct3(id_funct3),
+@@ -127,7 +129,7 @@ module riscv_core_pipe #(
+         .mem_read(id_mem_read), .mem_write(id_mem_write), .wb_sel(id_wb_sel),
+         .branch(id_branch), .jump(id_jump), .jalr(id_jalr), .is_muldiv(id_is_muldiv),
+         .is_csr(id_is_csr), .sys_ecall(id_sys_ecall),
+-        .sys_ebreak(id_sys_ebreak), .sys_mret(id_sys_mret)
++        .sys_ebreak(id_sys_ebreak), .sys_mret(id_sys_mret), .illegal(id_illegal)
+     );
+ 
+     wire [31:0] id_rs1_data, id_rs2_data;
+@@ -162,7 +164,7 @@ module riscv_core_pipe #(
+             idex_rs1_data <= 32'b0; idex_rs2_data <= 32'b0; idex_imm <= 32'b0;
+             idex_pc <= 32'b0; idex_pc4 <= 32'b0;
+             idex_rd <= 5'b0; idex_rs1 <= 5'b0; idex_rs2 <= 5'b0; idex_funct3 <= 3'b0;
+-            idex_is_csr <= 1'b0; idex_sys_ecall <= 1'b0; idex_sys_ebreak <= 1'b0; idex_sys_mret <= 1'b0; idex_csr_addr <= 12'b0;
++            idex_is_csr <= 1'b0; idex_sys_ecall <= 1'b0; idex_sys_ebreak <= 1'b0; idex_sys_mret <= 1'b0; idex_illegal <= 1'b0; idex_csr_addr <= 12'b0;
+         end else if (bus_stall) begin
+             // magistrala: hold
+         end else if (mul_stall) begin
+@@ -174,7 +176,7 @@ module riscv_core_pipe #(
+             idex_rs1_data <= 32'b0; idex_rs2_data <= 32'b0; idex_imm <= 32'b0;
+             idex_pc <= 32'b0; idex_pc4 <= 32'b0;
+             idex_rd <= 5'b0; idex_rs1 <= 5'b0; idex_rs2 <= 5'b0; idex_funct3 <= 3'b0;
+-            idex_is_csr <= 1'b0; idex_sys_ecall <= 1'b0; idex_sys_ebreak <= 1'b0; idex_sys_mret <= 1'b0; idex_csr_addr <= 12'b0;
++            idex_is_csr <= 1'b0; idex_sys_ecall <= 1'b0; idex_sys_ebreak <= 1'b0; idex_sys_mret <= 1'b0; idex_illegal <= 1'b0; idex_csr_addr <= 12'b0;
+         end else begin
+             idex_reg_write <= id_reg_write; idex_mem_read <= id_mem_read;
+             idex_mem_write <= id_mem_write; idex_branch <= id_branch;
+@@ -185,7 +187,7 @@ module riscv_core_pipe #(
+             idex_imm <= id_imm; idex_pc <= ifid_pc; idex_pc4 <= ifid_pc4;
+             idex_rd <= id_rd; idex_rs1 <= id_rs1; idex_rs2 <= id_rs2;
+             idex_funct3 <= id_funct3;
+-            idex_is_csr <= id_is_csr; idex_sys_ecall <= id_sys_ecall; idex_sys_ebreak <= id_sys_ebreak; idex_sys_mret <= id_sys_mret; idex_csr_addr <= ifid_instr[31:20];
++            idex_is_csr <= id_is_csr; idex_sys_ecall <= id_sys_ecall; idex_sys_ebreak <= id_sys_ebreak; idex_sys_mret <= id_sys_mret; idex_illegal <= id_illegal; idex_csr_addr <= ifid_instr[31:20];
+         end
+     end
+ 
+@@ -249,12 +251,34 @@ module riscv_core_pipe #(
+     wire        csr_wr    = idex_is_csr & ((csr_op == 2'b01) | (idex_rs1 != 5'b0));
+ 
+     // detectare trap / mret (gate cu ~mul_stall: o singura instr in EX)
+-    wire        csr_illegal = idex_is_csr & ~csr_addr_valid;
+-    wire        ex_trap = (idex_sys_ecall | idex_sys_ebreak | csr_illegal) & ~mul_stall;
++    wire        csr_illegal = (idex_is_csr & ~csr_addr_valid) | idex_illegal;
++
++    // ---- exceptii de adresa nealiniata (rezolvate in EX) ----
++    // tinta transferului de control (branch/JAL: pc+imm; JALR: (rs1+imm)&~1)
++    wire [31:0] ex_ctrl_target   = (idex_jump & idex_jalr) ? ex_jalr_target : ex_pc_target;
++    wire        ex_ctrl_transfer = ex_branch_taken | idex_jump;
++    // IALIGN=32 (fara extensia C): tinta trebuie aliniata la 4
++    wire        ex_fetch_misal   = ex_ctrl_transfer & (|ex_ctrl_target[1:0]);
++    // LH/LHU/SH: adresa para; LW/SW: adresa multiplu de 4 (funct3[1:0]: 01=half, 10=word)
++    wire        ex_addr_misal    = (idex_funct3[1:0] == 2'b01 &  ex_alu_result[0])
++                                 | (idex_funct3[1:0] == 2'b10 & |ex_alu_result[1:0]);
++    wire        ex_load_misal    = idex_mem_read  & ex_addr_misal;
++    wire        ex_store_misal   = idex_mem_write & ex_addr_misal;
++
++    wire        ex_trap = (idex_sys_ecall | idex_sys_ebreak | csr_illegal |
++                           ex_fetch_misal | ex_load_misal | ex_store_misal) & ~mul_stall;
+     wire        ex_mret =  idex_sys_mret & ~mul_stall;
+     wire [31:0] ex_trap_cause = idex_sys_ecall  ? `CAUSE_ECALL_M
+-                              : idex_sys_ebreak  ? `CAUSE_BREAKPOINT
+-                              :                    `CAUSE_ILLEGAL;
++                              : idex_sys_ebreak ? `CAUSE_BREAKPOINT
++                              : csr_illegal     ? `CAUSE_ILLEGAL
++                              : ex_fetch_misal  ? `CAUSE_MISALIGNED_FETCH
++                              : ex_load_misal   ? `CAUSE_MISALIGNED_LOAD
++                              :                   `CAUSE_MISALIGNED_STORE;
++    // mtval: PC pentru EBREAK, adresa vinovata pentru exceptiile de aliniere
++    wire [31:0] ex_trap_val   = idex_sys_ebreak ? idex_pc
++                              : ex_fetch_misal  ? ex_ctrl_target
++                              : (ex_load_misal | ex_store_misal) ? ex_alu_result
++                              :                   32'b0;
+ 
+     csr u_csr (
+         .clk(clk), .rst_n(rst_n),
+@@ -262,7 +286,7 @@ module riscv_core_pipe #(
+         .addr(idex_csr_addr), .wdata(csr_wval),
+         .rdata(csr_rdata), .addr_valid(csr_addr_valid),
+         .trap_en(ex_trap), .trap_cause(ex_trap_cause),
+-        .trap_epc(idex_pc), .trap_val(32'b0), .mret_en(ex_mret),
++        .trap_epc(idex_pc), .trap_val(ex_trap_val), .mret_en(ex_mret),
+         .mtvec_o(csr_mtvec), .mepc_o(csr_mepc)
+     );
+ 
+diff --git a/rtl/riscv_defs.vh b/rtl/riscv_defs.vh
+index 4f43718..f0ed93a 100644
+--- a/rtl/riscv_defs.vh
++++ b/rtl/riscv_defs.vh
+@@ -140,6 +140,9 @@
+ `define CAUSE_ILLEGAL    32'd2
+ `define CAUSE_BREAKPOINT 32'd3
+ `define CAUSE_ECALL_M    32'd11
++`define CAUSE_MISALIGNED_FETCH 32'd0   // instruction address misaligned (branch/jump target)
++`define CAUSE_MISALIGNED_LOAD  32'd4   // load address misaligned
++`define CAUSE_MISALIGNED_STORE 32'd6   // store/AMO address misaligned
+ 
+ // ------------------------------------------------------------
+ //  Encodarea interna a operatiei ALU (semnal de control, 4 biti)

@@ -32,14 +32,37 @@ jobs:
       # Rulam pe sub-suite ca sa excludem `pmp` (PMP nu e implementat in nucleu,
       # iar testele pmp sunt selectate de riscof doar pe baza extensiei I).
       # `|| true`: nu oprim la prima suita cu esecuri; verdictul e dat de "Rezumat".
+      # Gaseste suita riscv-arch-test indiferent unde e (env var din imagine,
+      # locatii standard, sau clone de rezerva). Esueaza ZGOMOTOS daca lipseste.
+      - name: Localizeaza riscv-arch-test
+        id: archtest
+        run: |
+          ARCH="${RISCV_ARCH_TEST:-}"
+          if [ -z "$ARCH" ] || [ ! -d "$ARCH/riscv-test-suite" ]; then
+            for c in /opt/riscv-arch-test /work/riscv-arch-test; do
+              if [ -d "$c/riscv-test-suite" ]; then ARCH="$c"; break; fi
+            done
+          fi
+          if [ -z "$ARCH" ] || [ ! -d "$ARCH/riscv-test-suite" ]; then
+            echo "RISCV_ARCH_TEST nu e setat si nu exista nicio copie in imagine; clonez suita."
+            apt-get install -y git > /dev/null
+            git clone --depth 1 -b old-framework-3.x \
+              https://github.com/riscv-non-isa/riscv-arch-test /tmp/riscv-arch-test
+            ARCH=/tmp/riscv-arch-test
+          fi
+          echo "Suita riscv-arch-test: $ARCH"
+          echo "path=$ARCH" >> "$GITHUB_OUTPUT"
+
       - name: Ruleaza RISCOF (I, M, privilege, hints)
         working-directory: riscof
+        env:
+          ARCH: ${{ steps.archtest.outputs.path }}
         run: |
           for suite in I M privilege hints; do
             echo "::group::rv32i_m/$suite"
             riscof run --config=config.ini \
-              --suite=$RISCV_ARCH_TEST/riscv-test-suite/rv32i_m/$suite \
-              --env=$RISCV_ARCH_TEST/riscv-test-suite/env \
+              --suite=$ARCH/riscv-test-suite/rv32i_m/$suite \
+              --env=$ARCH/riscv-test-suite/env \
               --work-dir=riscof_work/$suite \
               --no-browser 2>&1 | tee riscof_$suite.log || true
             echo "::endgroup::"
@@ -71,6 +94,11 @@ jobs:
           echo "==================================================="
           echo "  TOTAL: $total_p passed, $total_f failed"
           echo "==================================================="
+          # 0 teste rulate = infrastructura stricata, NU succes
+          if [ "$total_p" -eq 0 ]; then
+            echo "::error::Niciun test nu a rulat - verifica log-urile riscof_*.log din artefacte"
+            exit 1
+          fi
           test "$total_f" -eq 0
 
       # Pastreaza semnaturile, log-urile si report.html pentru depanare,
