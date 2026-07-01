@@ -33,7 +33,7 @@ jobs:
       - name: Ruleaza RISCOF
         run: |
           cd riscof
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/pipe5
           riscof run --config=config.ini \
             --suite=$RISCV_ARCH_TEST/riscv-test-suite/rv32i_m \
             --env=$RISCV_ARCH_TEST/riscv-test-suite/env
