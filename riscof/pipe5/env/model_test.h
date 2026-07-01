@@ -30,10 +30,10 @@
 
 // inceputul / sfarsitul regiunii de semnatura
 #define RVMODEL_DATA_BEGIN                                              \
-  .align 2; .global begin_signature; begin_signature:
+  .align 4; .global begin_signature; begin_signature:
 
 #define RVMODEL_DATA_END                                                \
-  .align 2; .global end_signature; end_signature:                       \
+  .align 4; .global end_signature; end_signature:                       \
   RVMODEL_DATA_SECTION
 
 // fara I/O, fara intreruperi (DUT minimal)
