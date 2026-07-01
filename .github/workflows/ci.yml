@@ -20,8 +20,12 @@ jobs:
   # 'container' cu imaginea ta sau adauga pasii de instalare a toolchain-ului.
   riscof:
     runs-on: ubuntu-latest
-    # container: image: <imagine cu riscv32-unknown-elf-gcc + spike + riscof>
-    #if: ${{ false }}   # activeaza dupa ce ai imaginea/toolchain-ul in CI
+    container:
+      image: ghcr.io/valifloricescu/riscof-pipe5:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    if: ${{ false }} 
     steps:
       - uses: actions/checkout@v4
       - name: Instaleaza iverilog
