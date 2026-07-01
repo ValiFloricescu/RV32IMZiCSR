@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Instaleaza iverilog
-        run:  apt-get update && sudo apt-get install -y iverilog python3-pip
+        run:  apt-get update && apt-get install -y iverilog python3-pip
       - name: Ruleaza RISCOF
         run: |
           cd riscof
