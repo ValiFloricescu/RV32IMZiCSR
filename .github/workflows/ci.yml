@@ -15,9 +15,7 @@ jobs:
       - name: Regresie completa (make)
         run: make
 
-  # ---- Conformitate RISCOF (mai grea: cere toolchain + spike + riscof) ----
-  # Ruleaza pe o imagine cu toolchain-ul RISC-V preinstalat. Inlocuieste
-  # 'container' cu imaginea ta sau adauga pasii de instalare a toolchain-ului.
+  # ---- Conformitate RISCOF (toolchain + spike + riscof din imagine) ----
   riscof:
     runs-on: ubuntu-latest
     container:
@@ -25,15 +23,65 @@ jobs:
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    #if: ${{ false }} 
     steps:
       - uses: actions/checkout@v4
+
       - name: Instaleaza iverilog
-        run:  apt-get update && apt-get install -y iverilog python3-pip
-      - name: Ruleaza RISCOF
+        run: apt-get update && apt-get install -y iverilog python3-pip
+
+      # Rulam pe sub-suite ca sa excludem `pmp` (PMP nu e implementat in nucleu,
+      # iar testele pmp sunt selectate de riscof doar pe baza extensiei I).
+      # `|| true`: nu oprim la prima suita cu esecuri; verdictul e dat de "Rezumat".
+      - name: Ruleaza RISCOF (I, M, privilege, hints)
+        working-directory: riscof
         run: |
-          cd riscof
-          export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/pipe5:$(pwd)/spike
-          riscof run --config=config.ini \
-            --suite=$RISCV_ARCH_TEST/riscv-test-suite/rv32i_m \
-            --env=$RISCV_ARCH_TEST/riscv-test-suite/env
+          for suite in I M privilege hints; do
+            echo "::group::rv32i_m/$suite"
+            riscof run --config=config.ini \
+              --suite=$RISCV_ARCH_TEST/riscv-test-suite/rv32i_m/$suite \
+              --env=$RISCV_ARCH_TEST/riscv-test-suite/env \
+              --work-dir=riscof_work/$suite \
+              --no-browser 2>&1 | tee riscof_$suite.log || true
+            echo "::endgroup::"
+          done
+
+      # Contorizeaza Passed/Failed din log-uri, scrie tabelul in Job Summary
+      # si intoarce cod de eroare daca exista teste picate.
+      - name: Rezumat teste (passed/failed)
+        working-directory: riscof
+        run: |
+          total_p=0; total_f=0
+          {
+            echo "## Conformitate RISCOF — rv32i_m"
+            echo ""
+            echo "| Suita | Passed | Failed |"
+            echo "|-------|-------:|-------:|"
+          } >> "$GITHUB_STEP_SUMMARY"
+          for suite in I M privilege hints; do
+            p=$(grep -c ' : Passed' riscof_$suite.log || true)
+            f=$(grep -c ' : Failed' riscof_$suite.log || true)
+            total_p=$((total_p + p)); total_f=$((total_f + f))
+            echo "| $suite | $p | $f |" >> "$GITHUB_STEP_SUMMARY"
+          done
+          {
+            echo "| **Total** | **$total_p** | **$total_f** |"
+            echo ""
+            echo "_Suita \`pmp\` este exclusa: PMP nu este implementat in nucleu._"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "==================================================="
+          echo "  TOTAL: $total_p passed, $total_f failed"
+          echo "==================================================="
+          test "$total_f" -eq 0
+
+      # Pastreaza semnaturile, log-urile si report.html pentru depanare,
+      # inclusiv (mai ales) cand testele pica.
+      - name: Incarca artefactele RISCOF
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: riscof-results
+          path: |
+            riscof/riscof_work
+            riscof/riscof_*.log
+          retention-days: 14
+          if-no-files-found: warn
