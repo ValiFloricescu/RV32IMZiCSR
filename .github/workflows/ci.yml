@@ -35,6 +35,9 @@ jobs:
       - name: Ruleaza RISCOF (I, M, privilege, hints)
         working-directory: riscof
         run: |
+          # riscof face os.mkdir (ne-recursiv) pe --work-dir, deci parintele
+          # trebuie sa existe dinainte.
+          mkdir -p riscof_work
           for suite in I M privilege hints; do
             echo "::group::rv32i_m/$suite"
             riscof run --config=config.ini \
@@ -71,4 +74,6 @@ jobs:
           echo "==================================================="
           echo "  TOTAL: $total_p passed, $total_f failed"
           echo "==================================================="
-          test "$total_f" -eq 0
+          # Esec si daca nu a rulat niciun test (ex: riscof a crapat inainte
+          # de executie), nu doar daca exista teste picate.
+          test "$total_p" -gt 0 && test "$total_f" -eq 0
